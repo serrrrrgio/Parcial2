@@ -1,54 +1,80 @@
 package co.edu.uniquindio.poo.parcial2.controller;
 
-import co.edu.uniquindio.poo.parcial2.facade.PropertyFacade;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.StackPane;
+import javafx.scene.Parent;
+
+import java.io.IOException;
 
 /**
- * Controller for the main dashboard view
+ * Controller for the main dashboard view with navigation
  */
 public class DashboardController {
 
     @FXML
-    private Label lblTotalProperties;
+    private StackPane contentArea;
 
-    @FXML
     private PropertyFormController propertyFormController;
-
-    @FXML
     private PropertyListController propertyListController;
-
-    private PropertyFacade propertyFacade;
 
     @FXML
     public void initialize() {
-        propertyFacade = PropertyFacade.getInstance();
-        updateStatistics();
-
-        // Set up communication between form and list controllers
-        if (propertyFormController != null) {
-            propertyFormController.setDashboardController(this);
-        }
-        if (propertyListController != null) {
-            propertyListController.setDashboardController(this);
-        }
+        // Load the form view by default
+        showFormView();
     }
 
     /**
-     * Update statistics displayed on dashboard
+     * Show the property form view
      */
-    public void updateStatistics() {
-        int total = propertyFacade.getPropertyCount();
-        lblTotalProperties.setText(String.valueOf(total));
+    @FXML
+    public void showFormView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/parcial2/view/PropertyFormView.fxml"));
+            Parent formView = loader.load();
+            propertyFormController = loader.getController();
+            propertyFormController.setDashboardController(this);
+
+            contentArea.getChildren().clear();
+            contentArea.getChildren().add(formView);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error loading PropertyFormView: " + e.getMessage());
+        }
     }
 
     /**
-     * Refresh the property list
+     * Show the property list view
+     */
+    @FXML
+    public void showListView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/parcial2/view/PropertyListView.fxml"));
+            Parent listView = loader.load();
+            propertyListController = loader.getController();
+            propertyListController.setDashboardController(this);
+
+            contentArea.getChildren().clear();
+            contentArea.getChildren().add(listView);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error loading PropertyListView: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Refresh the property list (called after adding a property)
      */
     public void refreshPropertyList() {
         if (propertyListController != null) {
             propertyListController.refreshTable();
         }
-        updateStatistics();
+    }
+
+    /**
+     * Switch to list view after adding a property
+     */
+    public void switchToListView() {
+        showListView();
     }
 }

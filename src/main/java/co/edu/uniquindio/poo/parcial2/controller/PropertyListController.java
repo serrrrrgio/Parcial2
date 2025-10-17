@@ -177,11 +177,6 @@ public class PropertyListController {
                 // Patrón Facade
                 propertyFacade.deleteProperty(property);
                 tableProperties.refresh();
-
-                // Update dashboard statistics
-                if (dashboardController != null) {
-                    dashboardController.updateStatistics();
-                }
             }
         });
     }

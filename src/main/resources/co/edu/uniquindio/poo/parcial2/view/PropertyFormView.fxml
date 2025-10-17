@@ -7,7 +7,10 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="co.edu.uniquindio.poo.parcial2.controller.PropertyFormController"
-      spacing="15.0">
+      spacing="15.0" styleClass="content-card">
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+    </padding>
 
     <Label text="Add New Property" styleClass="section-title"/>
 
@@ -26,15 +29,13 @@
     <!-- Number of Rooms -->
     <VBox spacing="8.0">
         <Label text="Number of Rooms" styleClass="form-label"/>
-        <Spinner fx:id="spinRooms" min="1" max="50" initialValue="3"
-                 editable="true" styleClass="modern-spinner" maxWidth="Infinity"/>
+        <Spinner fx:id="spinRooms" editable="true" styleClass="modern-spinner" maxWidth="Infinity"/>
     </VBox>
 
     <!-- Number of Floors -->
     <VBox spacing="8.0">
         <Label text="Number of Floors" styleClass="form-label"/>
-        <Spinner fx:id="spinFloors" min="1" max="20" initialValue="1"
-                 editable="true" styleClass="modern-spinner" maxWidth="Infinity"/>
+        <Spinner fx:id="spinFloors" editable="true" styleClass="modern-spinner" maxWidth="Infinity"/>
     </VBox>
 
     <!-- Price -->
@@ -42,6 +43,23 @@
         <Label text="Price" styleClass="form-label"/>
         <TextField fx:id="txtPrice" promptText="Enter price" styleClass="modern-input"/>
     </VBox>
+
+    <!-- Decorator Pattern - Additional Features -->
+    <Separator/>
+
+    <Label text="Additional Features (Decorator Pattern)" styleClass="form-label"/>
+
+    <VBox spacing="10.0">
+        <CheckBox fx:id="chkGarage" text="Add Garage (+$15,000)" styleClass="modern-checkbox"/>
+        <CheckBox fx:id="chkPool" text="Add Pool (+$25,000)" styleClass="modern-checkbox"/>
+        <CheckBox fx:id="chkGarden" text="Add Garden (+$10,000)" styleClass="modern-checkbox"/>
+    </VBox>
+
+    <!-- Total Price Display -->
+    <HBox spacing="10.0" alignment="CENTER_LEFT">
+        <Label text="Total Price:" styleClass="form-label"/>
+        <Label fx:id="lblTotalPrice" text="\$0.00"/>
+    </HBox>
 
     <!-- Add Button -->
     <Button fx:id="btnAdd" text="Add Property" styleClass="btn-primary"
