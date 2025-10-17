@@ -1,5 +1,6 @@
 module co.edu.uniquindio.poo.parcial2 {
     requires javafx.controls;
+
     requires javafx.fxml;
 
     // Export packages
