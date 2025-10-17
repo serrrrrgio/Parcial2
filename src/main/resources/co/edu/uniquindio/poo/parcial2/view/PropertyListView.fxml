@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uniquindio.poo.parcial2.controller.PropertyListController"
+      spacing="15.0">
+
+    <Label text="Property List" styleClass="section-title"/>
+
+    <!-- Search Field -->
+    <VBox spacing="8.0">
+        <Label text="Search" styleClass="form-label"/>
+        <TextField fx:id="txtSearch" promptText="Search by type or city..." styleClass="search-field"/>
+    </VBox>
+
+    <!-- Table -->
+    <TableView fx:id="tableProperties" styleClass="custom-table" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colType" text="Type" prefWidth="100.0"/>
+            <TableColumn fx:id="colCity" text="City" prefWidth="100.0"/>
+            <TableColumn fx:id="colRooms" text="Rooms" prefWidth="80.0"/>
+            <TableColumn fx:id="colFloors" text="Floors" prefWidth="80.0"/>
+            <TableColumn fx:id="colPrice" text="Price" prefWidth="100.0"/>
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+    </TableView>
+
+</VBox>

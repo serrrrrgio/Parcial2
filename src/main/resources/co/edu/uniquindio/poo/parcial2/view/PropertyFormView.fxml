@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uniquindio.poo.parcial2.controller.PropertyFormController"
+      spacing="15.0">
+
+    <Label text="Add New Property" styleClass="section-title"/>
+
+    <!-- Property Type -->
+    <VBox spacing="8.0">
+        <Label text="Property Type" styleClass="form-label"/>
+        <ComboBox fx:id="cmbPropertyType" promptText="Select type" styleClass="modern-combo" maxWidth="Infinity"/>
+    </VBox>
+
+    <!-- City -->
+    <VBox spacing="8.0">
+        <Label text="City" styleClass="form-label"/>
+        <TextField fx:id="txtCity" promptText="Enter city" styleClass="modern-input"/>
+    </VBox>
+
+    <!-- Number of Rooms -->
+    <VBox spacing="8.0">
+        <Label text="Number of Rooms" styleClass="form-label"/>
+        <Spinner fx:id="spinRooms" min="1" max="50" initialValue="3"
+                 editable="true" styleClass="modern-spinner" maxWidth="Infinity"/>
+    </VBox>
+
+    <!-- Number of Floors -->
+    <VBox spacing="8.0">
+        <Label text="Number of Floors" styleClass="form-label"/>
+        <Spinner fx:id="spinFloors" min="1" max="20" initialValue="1"
+                 editable="true" styleClass="modern-spinner" maxWidth="Infinity"/>
+    </VBox>
+
+    <!-- Price -->
+    <VBox spacing="8.0">
+        <Label text="Price" styleClass="form-label"/>
+        <TextField fx:id="txtPrice" promptText="Enter price" styleClass="modern-input"/>
+    </VBox>
+
+    <!-- Add Button -->
+    <Button fx:id="btnAdd" text="Add Property" styleClass="btn-primary"
+            onAction="#handleAddProperty" maxWidth="Infinity"/>
+
+</VBox>

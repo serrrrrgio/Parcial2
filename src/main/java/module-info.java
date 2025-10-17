@@ -4,7 +4,7 @@ module co.edu.uniquindio.poo.parcial2 {
     requires javafx.fxml;
 
     // Export packages
-
+    exports co.edu.uniquindio.poo.parcial2.controller;
     exports co.edu.uniquindio.poo.parcial2.model;
     exports co.edu.uniquindio.poo.parcial2.facade;
     exports co.edu.uniquindio.poo.parcial2.decorator;
